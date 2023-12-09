@@ -65,8 +65,7 @@ def part2(numbers):
         k *= r
     return k
 
-    print("EO2____________")
-
+    print("EO2____________")y 
 if __name__ == "__main__":
     numbers = parse(6)
     print(numbers)
