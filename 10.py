@@ -20,7 +20,7 @@ def part1(numbers):
     """Solve part 1."""
     for ind, i in enumerate(numbers):
         if i.find("S") > -1:
-            return (recur(ind, i.find("S"), numbers, 1, [[False for char in i] for i in numbers]) - 1)/2
+            return (recur(ind, i.find("S"), numbers, 1, [[False for char in i] for i in numbers]) - 1)//2
     print("EO1____________")
 
 def recur(x, y, numbers, count, visited):
@@ -99,18 +99,12 @@ def part2(numbers):
             path += [path[0]]
             path = [list(i) for i in path]
             s = 0
-            for ind, k in enumerate(path):
-                if(numbers[k[0]][k[1]] == "L"):
-                    path[ind] = (k[0]-1, k[1]+1)
-                if(numbers[k[0]][k[1]] == "J"):
-                    path[ind] = (k[0]-1, k[1]-1)
-                if(numbers[k[0]][k[1]] == "F"):
-                    path[ind] = (k[0]+1, k[1]+1)
-                if(numbers[k[0]][k[1]] == "7"):
-                    path[ind] = (k[0]+1, k[1]-1)
+            perimeter = part1(numbers)
+
             for k in range(1, len(path)):
                 s += (path[k][0]+path[k-1][0]) * (path[k][1]-path[k-1][1])
-            return s//2
+
+            return s//2 - perimeter + 1
     print("EO1____________")
 
 def recurCountingArea(x, y, numbers, count, visited, path):
@@ -188,5 +182,6 @@ def recurCountingArea(x, y, numbers, count, visited, path):
 
 if __name__ == "__main__":
     numbers = parse(10)
+    print(numbers)
     print(part1(numbers))
     print(part2(numbers))
