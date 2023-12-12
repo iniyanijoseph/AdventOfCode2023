@@ -30,17 +30,13 @@ def part1(numbers):
         for y, j in enumerate(i):
             if(j == "#"):
                 pairs.append((x, y))
-    #print(pairs)
 
     for pair in pairs:
         for other in pairs:
             diff = abs(other[0]-pair[0]) + abs(other[1]-pair[1])
-            #re = rows[min(other[0], pair[0]):max(other[0], pair[0])]
             numberRowExpansions = sum(rows[min(other[0], pair[0]):max(other[0], pair[0])])
-            #ce = cols[min(other[1], pair[1]):max(other[1], pair[1])]
             numberColExpansions = sum(cols[min(other[1], pair[1]):max(other[1], pair[1])])
-
-            #print(pair, other, sum([diff, numberRowExpansions, numberColExpansions]))
+            
             s += sum([diff, numberRowExpansions, numberColExpansions])
     
     return s//2
