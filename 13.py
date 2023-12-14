@@ -86,7 +86,7 @@ def part2(numbers):
                     break
                 offset+=1
         
-            if ndif == 0:
+            if ndif != 1:
                 symmetric = False
 
             if(symmetric):
@@ -113,7 +113,7 @@ def part2(numbers):
                         break
                     offset+=1
             
-                if ndif == 0:
+                if ndif != 1:
                     symmetric = False
 
                 if(symmetric):
