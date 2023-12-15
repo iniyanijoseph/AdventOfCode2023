@@ -62,8 +62,6 @@ def part2(numbers):
 
     s = 0
 
-    print(boxes)
-
     for k in boxes:
         for ind, r in enumerate(boxes[k]):
             s += (k+1)*(ind+1)*int(r[1])
