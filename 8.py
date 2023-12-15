@@ -1,4 +1,4 @@
-# aoc 2023 _.py
+# aoc 2023 8.py
 
 import re
 from math import gcd

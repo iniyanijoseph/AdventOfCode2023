@@ -1,4 +1,4 @@
-# aoc 2023 _.py
+# aoc 2023 12.py
 
 import pathlib
 import sys

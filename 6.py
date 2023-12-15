@@ -1,4 +1,4 @@
-# aoc 2023 _.py
+# aoc 2023 6.py
 
 import pathlib
 import sys
@@ -65,7 +65,7 @@ def part2(numbers):
         k *= r
     return k
 
-    print("EO2____________")y 
+    print("EO2____________")
 if __name__ == "__main__":
     numbers = parse(6)
     print(numbers)

@@ -1,4 +1,4 @@
-# aoc 2023 15.py
+# aoc 2023 17.py
 
 import pathlib
 import sys
@@ -24,7 +24,7 @@ def part2(numbers):
     print("EO2____________")
 
 if __name__ == "__main__":
-    numbers = parse(15)
+    numbers = parse(17)
     print(numbers)
     print(part1(numbers))
     print(part2(numbers))
