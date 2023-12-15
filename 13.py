@@ -80,7 +80,7 @@ def part2(numbers):
                 up = group[i-offset]
                 print(i-offset, i+offset+1)
                 down = group[i+offset+1]
-                ndif = sum([up[j] != down[j] for j in range(len(up))])
+                ndif += sum([up[j] != down[j] for j in range(len(up))])
                 if(ndif > 1):
                     symmetric = False
                     break
@@ -107,7 +107,7 @@ def part2(numbers):
                     up = group[i-offset]
                     print("col", i-offset, i+offset+1)
                     down = group[i+offset+1]
-                    ndif = sum([up[j] != down[j] for j in range(len(up))])
+                    ndif += sum([up[j] != down[j] for j in range(len(up))])
                     if(ndif > 1):
                         symmetric = False
                         break
