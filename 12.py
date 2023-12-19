@@ -36,7 +36,7 @@ def recursivelyFit(line, springs, index, current):
     if(end > len(line)):
         return 0
     group = line[index:end]
-    if(not all([r != "." for r in group]) or (line[index-1] == "#" and index != 0)):
+    if(not all([r != "." for r in group]) or (line[index-1] == "#" and index != 0) or (end < len(line) and line[end] == "#")):
         return 0
     elif(current == len(springs)-1):
         return 1
