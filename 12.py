@@ -24,10 +24,10 @@ def part1(numbers):
     for strings, springs in numbers:
         k = 0
         for i in range(len(strings)):
-            k += recursivelyFit(strings, springs, i, 0)
+            l = strings[:i]
+            if(not "#" in l):
+                k += recursivelyFit(strings, springs, i, 0)
         s += k
-        print(k)
-    
     return s
     print("EO1____________")
 
@@ -36,22 +36,47 @@ def recursivelyFit(line, springs, index, current):
     if(end > len(line)):
         return 0
     group = line[index:end]
-    if(not all([r != "." for r in group]) or (line[index-1] == "#" and index != 0) or (end < len(line) and line[end] == "#")):
+    k = line[end:]
+    p = all([r != "." for r in group])
+    q = (line[index-1] == "#" and index != 0)
+    r = (end < len(line) and line[end] == "#")
+    if(not p or q or r):
         return 0
     elif(current == len(springs)-1):
+        if("#" in k):
+            return 0
         return 1
 
 
     s = 0
 
     for i in range(end+1, len(line)):
-        s += recursivelyFit(line, springs, i, current+1)
+        l = line[end:i]
+        if(not "#" in l):
+            s += recursivelyFit(line, springs, i, current+1)
     
     return s
 
 
 def part2(numbers):
     """Solve part 2."""
+    numbers = [[line.split(" ")[0], list(map(int, line.split(" ")[1].split(",")))] for line in numbers]
+
+    s = 0
+
+    for strings, springs in numbers:
+        k = 0
+        for i in range(len(strings)):
+            l = strings[:i]
+            if(not "#" in l):
+                k += recursivelyFit(strings, springs, i, 0)
+        
+        strings = strings + "?" + strings
+        
+
+        s += k
+    
+    return s
     print("EO2____________")
 
 if __name__ == "__main__":
