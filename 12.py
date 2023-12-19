@@ -22,36 +22,31 @@ def part1(numbers):
     s = 0
 
     for strings, springs in numbers:
+        k = 0
         for i in range(len(strings)):
-            s += recursivelyFit(strings, springs, [False for n in strings], i, 0)
+            k += recursivelyFit(strings, springs, i, 0)
+        s += k
+        print(k)
     
     return s
     print("EO1____________")
 
-def recursivelyFit(line, springs, fitted, index, numFitted):
-    if(index > len(line)):
+def recursivelyFit(line, springs, index, current):
+    end = index + springs[current]
+    if(end > len(line)):
         return 0
-    if(numFitted == len(springs)):
+    group = line[index:end]
+    if(not all([r != "." for r in group]) or (line[index-1] == "#" and index != 0)):
+        return 0
+    elif(current == len(springs)-1):
         return 1
 
-    fitting = springs[numFitted + 1]
-    
+
     s = 0
 
-    for i in range(index, len(line)):
-        canFit = (i + fitting < len(line))and all([line[j] != "." for j in range(i, i+fitting)])
-        if(not canFit):
-            return 0
-        else:
-            pre = fitted[0:i]
-            l = [True for i in range(fitting)]
-            post = fitted[fitting+i:]
-            nFit = pre + l + post
-            s += recursivelyFit(line,
-                  springs,
-                  nFit,
-                  fitting + i+2,
-                  numFitted + 1)
+    for i in range(end+1, len(line)):
+        s += recursivelyFit(line, springs, i, current+1)
+    
     return s
 
 
