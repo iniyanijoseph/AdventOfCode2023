@@ -83,13 +83,13 @@ def rescore(hand1):
         pass
     vals.append(k+jfreq)
 
+    score = 0
+
     numPairs = 0
 
-    for k in freq1:
+    for k in vals:
         if k == 2:
-            numPairs += 1
-
-    # Issue is case 55AJ8
+            numPairs += 1 
 
     if(5 in vals):
         score += 60000000000

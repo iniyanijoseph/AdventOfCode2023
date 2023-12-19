@@ -65,17 +65,20 @@ def part2(numbers):
     s = 0
 
     for strings, springs in numbers:
+        t = 0
+        for i in range(len(strings)):
+            l = strings[:i]
+            if(not "#" in l):
+                t += recursivelyFit(strings, springs, i, 0)
+
         k = 0
+        strings = strings +  "?" + strings
+        springs *= 2
         for i in range(len(strings)):
             l = strings[:i]
             if(not "#" in l):
                 k += recursivelyFit(strings, springs, i, 0)
-        
-        strings = strings + "?" + strings
-        
-
-        s += k
-    
+        s += t*5 + (k-t)*4
     return s
     print("EO2____________")
 
